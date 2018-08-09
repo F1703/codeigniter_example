@@ -1,3 +1,4 @@
+<?php echo validation_errors() ?>
 
 
 <?= form_open('pelicula/store') ?>

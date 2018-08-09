@@ -5,8 +5,9 @@ class Pelicula extends CI_Controller {
 	function __construc(){
 		// $this->load->model('Model_pelicula');
 		// $this->load->helper('form');
+		// $this->load->library('form_validation');
 		// $this->load->helper('url');
-		// los helper form y url añadirlos en /config/autoload.php
+		// los helper form,url,from_validation añadirlos en /config/autoload.php
 	}
 
 	public function index(){
@@ -25,12 +26,23 @@ class Pelicula extends CI_Controller {
 	}
 
 	public function recibirDatos(){
-		$data = array(
-			'nombre' => $this->input->post('nombre')
-		);
-		$this->load->model('Model_pelicula','modelopelicula');
-		$this->modelopelicula->crearpelicula($data);
-		redirect('pelicula');
+		
+		if ($this->input->post()) {
+
+			$this->form_validation->set_rules('nombre', 'el name es ','required|min_length[5]');
+			if ($this->form_validation->run() == TRUE) {
+				# informacion recibida
+				$this->load->model('Model_pelicula','modelopelicula');
+				$data = array(
+					'nombre' => $this->input->post('nombre')
+				);
+				$this->modelopelicula->crearpelicula($data);
+				redirect('pelicula');
+			} else {
+				redirect('pelicula');
+			}
+		}else redirect('pelicula');
+		
 	}
 
 

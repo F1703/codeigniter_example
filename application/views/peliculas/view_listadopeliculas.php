@@ -1,4 +1,5 @@
 
+<?php echo validation_errors() ?>
 
 
 <?php if ($datos): ?>

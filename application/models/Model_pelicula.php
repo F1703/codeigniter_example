@@ -17,6 +17,7 @@ class Model_pelicula extends CI_Model {
 	}
 
 	public function crearPelicula($data){
+		var_dump($data);
 		$this->load->database();
 		$this->db->insert('pelicula',$data);	
 	}
