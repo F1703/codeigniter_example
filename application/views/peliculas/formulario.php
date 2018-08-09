@@ -1,4 +1,4 @@
-<?= form_open('/pelicula/recibirdatos') ?>
+<?= form_open('pelicula/recibirdatos') ?>
 <?php
 	$nombre = [
 		'name' => 'nombre',
